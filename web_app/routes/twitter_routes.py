@@ -3,7 +3,9 @@
 from flask import Blueprint, jsonify #, render_template, request, flash, redirect
 
 from web_app.models import db, User, Tweet, parse_records
+
 from web_app.services.twitter_service import api as twitter_api
+
 from web_app.services.basilica_service import connection as basilica_connection
 
 twitter_routes = Blueprint("twitter_routes", __name__)
@@ -33,6 +35,7 @@ def fetch_user_data(screen_name):
     # fetch their tweets
     #
 
+
     statuses = twitter_api.user_timeline(screen_name, tweet_mode="extended", count=150)
     print("STATUSES", len(statuses))
 
@@ -45,6 +48,7 @@ def fetch_user_data(screen_name):
     print("EMBEDDINGS", len(embeddings))
 
     #
+    
     # store tweets in database (w/ embeddings)
     #
 

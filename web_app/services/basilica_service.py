@@ -4,12 +4,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 BASILICA_API_KEY = os.getenv("BASILICA_API_KEY")
 
 connection = basilica.Connection(BASILICA_API_KEY)
 print(type(connection)) #> <class 'basilica.Connection'>
 
 if __name__ == "__main__":
+    
 
     embedding = connection.embed_sentence("hey this is a cool tweet", model="twitter")
     print(embedding)
@@ -20,3 +22,5 @@ if __name__ == "__main__":
     for embed in embeddings:
         print("-----")
         print(len(embed))
+
+
